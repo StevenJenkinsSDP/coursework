@@ -83,64 +83,31 @@ public class Translator {
             return null;
 
         String ins = scan();
-
-        //use the 3 character label to create the new class
-        String insClassPrefix = String.valueOf(ins.toUpperCase().charAt(0)) + ins.substring(1,3);
-        String classToCreate = "sml."+insClassPrefix+"Instruction";
-        try {
-            Class instructClass = Class.forName(classToCreate);
-            Constructor c = instructClass.getDeclaredConstructor(int.class,int.class,int.class);
-
-            //
-            r = scanInt();
-            s1 = scanInt();
-            s2 = scanInt();
-
-            Object i = c.newInstance(r,s1,s2);
-
-
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-
-
         switch (ins) {
             case "add":
                 r = scanInt();
                 s1 = scanInt();
                 s2 = scanInt();
                 return new AddInstruction(label, r, s1, s2);
-            case "sub":
-                r = scanInt();
-                s1 = scanInt();
-                s2 = scanInt();
-                return new SubInstruction(label, r, s1, s2);
-            case "mul":
-                r = scanInt();
-                s1 = scanInt();
-                s2 = scanInt();
-                return new MulInstruction(label, r, s1, s2);
-            case "div":
-                r = scanInt();
-                s1 = scanInt();
-                s2 = scanInt();
-                return new DivInstruction(label, r, s1, s2);
             case "lin":
                 r = scanInt();
                 s1 = scanInt();
                 return new LinInstruction(label, r, s1);
-            case "out":
+            case "div":
                 r = scanInt();
-                return new OutInstruction(label, r);
-
+                s1 = scanInt();
+                s2 = scanInt();
+                return new DivInstruction(label, r, s1,s2);
+            case "mul":
+                r = scanInt();
+                s1 = scanInt();
+                s2 = scanInt();
+                return new MulInstruction(label, r, s1,s2);
+            case "sub":
+                r = scanInt();
+                s1 = scanInt();
+                s2 = scanInt();
+                return new SubInstruction(label, r, s1,s2);
         }
 
         // You will have to write code here for the other instructions.

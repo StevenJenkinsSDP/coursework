@@ -28,6 +28,6 @@ public class SubInstruction extends Instruction {
 
     @Override
     public String toString() {
-        return super.toString() + " " + op1 + " + " + op2 + " to " + result;
+        return super.toString() + " " + op1 + " - " + op2 + " to " + result;
     }
 }
