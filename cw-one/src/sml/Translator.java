@@ -71,23 +71,6 @@ public class Translator {
     }
 
 
-        public Instruction getInstruction(String name) {
-        Instruction in = null;
-        try {
-            Class c = Class.forName(name);
-            Constructor[] constructors = c.getConstructors();
-
-            Constructor cons = c.getConstructor(new Class[]{int.class, int.class});
-            in =  (Instruction) cons.newInstance(new Object[]{x, y});
-            if()
-
-        } catch (Exception c) {
-            System.out.println(c.getMessage());
-        }
-        return in;
-    }
-
-
 
     // line should consist of an MML instruction, with its label already
     // removed. Translate line into an instruction with label label
@@ -103,41 +86,42 @@ public class Translator {
 
         String ins = scan();
 
-        return load(ins);
+        String insProper =  ins.substring(0, 1).toUpperCase() + ins.substring(1).toLowerCase();
 
 
-        switch (ins) {
-            case "add":
-                r = scanInt();
-                s1 = scanInt();
-                s2 = scanInt();
-                return new AddInstruction(label, r, s1, s2);
-            case "lin":
-                r = scanInt();
-                s1 = scanInt();
-                return new LinInstruction(label, r, s1);
-            case "div":
-                r = scanInt();
-                s1 = scanInt();
-                s2 = scanInt();
-                return new DivInstruction(label, r, s1,s2);
-            case "mul":
-                r = scanInt();
-                s1 = scanInt();
-                s2 = scanInt();
-                return new MulInstruction(label, r, s1,s2);
-            case "sub":
-                r = scanInt();
-                s1 = scanInt();
-                s2 = scanInt();
-                return new SubInstruction(label, r, s1,s2);
-            case "bnz":
-                s1 = scanInt();
-                x = scan();
-                return new BnzInstruction(label, s1,x);
+
+System.out.println(insProper);
+        if (insProper.equals("Lin")) {
+            r = scanInt();
+            s1 = scanInt();
+            return new LinInstruction(label, r, s1);
+        } else if (insProper.equals("Bnz")) {
+            s1 = scanInt();
+            x = scan();
+            return new BnzInstruction(label, s1,x);
+        } else {
+            //use the 3 character label to create the new class
+            String classToCreate = "sml."+insProper+"Instruction";
+            try {
+                Class instructClass = Class.forName(classToCreate);
+
+                try {
+                    Constructor constructor = instructClass.getConstructor(String.class, int.class, int.class, int.class);
+                    r = scanInt();
+                    s1 = scanInt();
+                    s2 = scanInt();
+                    try {
+                        return (Instruction) constructor.newInstance(label, r, s1, s2);
+                    } catch (Exception a) {
+                        a.getMessage();
+                    }
+                } catch (NoSuchMethodException e) {
+                    e.getMessage();
+                }
+            } catch (ClassNotFoundException e) {
+                e.getException().getMessage();
+            }
         }
-
-        // You will have to write code here for the other instructions.
 
         return null;
     }

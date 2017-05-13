@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="605827ea-9b3b-4fc3-9c89-f3f3da4d8338" name="Default" comment="changed file">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sml/Translator.java" afterPath="$PROJECT_DIR$/src/sml/Translator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testBnz.txt" afterPath="$PROJECT_DIR$/testBnz.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -588,7 +587,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1494669670841</updated>
-      <workItem from="1494669674891" duration="2644000" />
+      <workItem from="1494669674891" duration="2960000" />
     </task>
     <task id="LOCAL-00001" summary="changed file">
       <created>1494670263474</created>
@@ -601,7 +600,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2644000" />
+    <option name="totallyTimeSpent" value="2960000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
