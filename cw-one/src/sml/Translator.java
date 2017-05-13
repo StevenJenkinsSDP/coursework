@@ -70,6 +70,25 @@ public class Translator {
         return true;
     }
 
+
+        public Instruction getInstruction(String name) {
+        Instruction in = null;
+        try {
+            Class c = Class.forName(name);
+            Constructor[] constructors = c.getConstructors();
+
+            Constructor cons = c.getConstructor(new Class[]{int.class, int.class});
+            in =  (Instruction) cons.newInstance(new Object[]{x, y});
+            if()
+
+        } catch (Exception c) {
+            System.out.println(c.getMessage());
+        }
+        return in;
+    }
+
+
+
     // line should consist of an MML instruction, with its label already
     // removed. Translate line into an instruction with label label
     // and return the instruction
@@ -83,6 +102,10 @@ public class Translator {
             return null;
 
         String ins = scan();
+
+        return load(ins);
+
+
         switch (ins) {
             case "add":
                 r = scanInt();

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="605827ea-9b3b-4fc3-9c89-f3f3da4d8338" name="Default" comment="changed file">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sml/Translator.java" afterPath="$PROJECT_DIR$/src/sml/Translator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testBnz.txt" afterPath="$PROJECT_DIR$/testBnz.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
