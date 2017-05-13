@@ -12,7 +12,7 @@ import java.util.Scanner;
  */
 public class Translator {
 
-    private static final String PATH = "/Users/steven/Documents/cw-one/";
+    private static final String PATH = "/Users/steven/Documents/coursework/cw-one/";
     // word + line is the part of the current line that's not yet processed
     // word has no whitespace
     // If word and line are not empty, line begins with whitespace

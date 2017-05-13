@@ -40,7 +40,7 @@ public class Machine {
         }
 
         Machine m = new Machine();
-        Translator t = new Translator("test1.sml");
+        Translator t = new Translator("test1.txt");
         t.readAndTranslate(m.getLabels(), m.getProg());
 
         System.out.println("Here is the program; it has " + m.getProg().size() + " instructions.");
