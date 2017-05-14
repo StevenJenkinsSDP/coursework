@@ -5,7 +5,8 @@ import vm.VirtualMachine
   * Created by steven on 01/04/2017.
   */
 class Iswap  extends ByteCode{
-  val code: Byte = 1
+
+  val code: Byte = bytecode("iswap")
 
   def execute(vm: VirtualMachine): VirtualMachine = {
     var x = vm.pop._1

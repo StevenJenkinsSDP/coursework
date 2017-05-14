@@ -7,10 +7,21 @@ object SJTest {
 
   def main(s:Array[String]): Unit = {
 
-    val iconst = new Iconst
-    println(iconst.bytecode)
+    val p = ProgramParserImpl
+    val iv = p.parse("/users/steven/Documents/c/cw-two/programs/p01.vm")
 
-    println(iconst.bytecode("iinc"))
+    println(" this is the output of program parser " +iv)
+
+    val b = ByteCodeParserImpl
+    val bv = b.changeToByte(iv)
+
+    System.out.println(bv)
+    //val bcv = b.parse(bv)
+
+    //val vmp = VirtualMachineParserImpl
+    //val v = vmp.parse("/users/steven/Documents/c/cw-two/programs/p01.vm")
+    //print(v)
+
   }
 
 }

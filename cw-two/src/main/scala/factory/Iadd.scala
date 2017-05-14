@@ -6,7 +6,7 @@ import vm.VirtualMachine
   */
 class Iadd extends ByteCode {
 
-  val code: Byte = 1
+  val code: Byte = bytecode("iadd")
 
   def execute(vm: VirtualMachine): VirtualMachine = {
     vm.push(vm.pop()._1 + vm.pop()._1)

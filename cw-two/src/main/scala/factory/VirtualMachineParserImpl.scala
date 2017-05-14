@@ -12,7 +12,6 @@ import vendor.Instruction
   */
 object VirtualMachineParserImpl extends VirtualMachineParser {
 
-  val v = VirtualMachineFactory.virtualMachine
   val p = VirtualMachineFactory.vendorParser
   val bc = VirtualMachineFactory.byteCodeParser
   val b:Vector[Byte] = Vector.empty
@@ -21,14 +20,10 @@ object VirtualMachineParserImpl extends VirtualMachineParser {
 
     //turn the file into an instruction list
     val ins = p.parse(file)
-
     //turn the instruction list into vector of bytes
-    for (i <- ins) {
-      val by = bc.bytecode(i.name)
-      b:+by
-    }
+
     //turn the vector of bytes into a vector of ByteCode
-    parse(b)
+    bc.parse(b)
   }
 
   def parse(bc: Vector[Byte]): Vector[ByteCode] = {

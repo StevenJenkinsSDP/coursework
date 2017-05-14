@@ -6,7 +6,8 @@ import vm.VirtualMachine
   */
 class Iconst extends ByteCode{
 
-  val code: Byte = 1
+  val code: Byte = bytecode("iconst")
+  val num:Byte = 0
 
   def execute(vm: VirtualMachine): VirtualMachine = {
     vm.push(vm.pop._1)
