@@ -17,10 +17,8 @@ object VirtualMachineParserImpl extends VirtualMachineParser {
 
     //turn the file into an instruction list
     val ins = pp.parse(file)
-    println("ins" +ins.size)
     //turn the instruction list into vector of bytes
     val byteVector = changeToByte(ins)
-    println("bytecodevector"+ byteVector.size)
     //turn the vector of bytes into a vector of ByteCode
     bcp.parse(byteVector)
   }

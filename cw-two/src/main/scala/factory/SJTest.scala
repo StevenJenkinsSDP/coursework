@@ -7,23 +7,13 @@ object SJTest {
 
   def main(s:Array[String]): Unit = {
 
-    val p = ProgramParserImpl
-   // val ins = p.parse("/users/steven/Documents/c/cw-two/programs/p01.vm")
+    val vmf  =VirtualMachineFactory
+    val vmp = vmf.virtualMachineParser
+    val vm = vmf.virtualMachine
 
-    //println(" this is the output of program parser " + ins)
+    val byteCodeVector = vmp.parse("/users/steven/Documents/c/cw-two/programs/p03.vm")
 
-    val vb = VirtualMachineParserImpl
-    val vc = vb.parse("/users/steven/Documents/c/cw-two/programs/p01.vm")
-    println(vc.size)
-
-    for(v<-vc) {
-      println(v.toString)
-    }
-
-
-    //val vmp = VirtualMachineParserImpl
-    //val v = vmp.parse("/users/steven/Documents/c/cw-two/programs/p01.vm")
-    //print(v)
+    vm.execute(byteCodeVector)
 
   }
 

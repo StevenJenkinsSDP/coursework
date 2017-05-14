@@ -1,9 +1,7 @@
 package factory
 
 import bc.{ByteCodeFactory, ByteCodeParser}
-import factory.ProgramParserImpl
 import vendor.{ProgramParser}
-import vendor.Instruction
 import vm.{VirtualMachine, VirtualMachineParser}
 
 import scala.io.Source
@@ -23,6 +21,6 @@ object VirtualMachineFactory {
 
   def virtualMachineParser: VirtualMachineParser = VirtualMachineParserImpl
 
-  def virtualMachine: VirtualMachine = new VirtualMachineImpl(null,null)
+  def virtualMachine: VirtualMachine = new VirtualMachineImpl
 
 }
