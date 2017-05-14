@@ -9,13 +9,10 @@ import scala.io.Source
 object ProgramParserImpl extends ProgramParser{
 
   var instructions:InstructionList = Vector.empty
-  val filePath = "/Users/steven/Documents/coursework/cw-two/programs/"
+
 
   def parse(file: String): InstructionList = {
-    val filePath = "/Users/steven/Documents/coursework/cw-two/programs/"
-    val fileName = filePath+file
-    val lines = Source.fromFile(fileName).getLines
-
+    val lines = Source.fromFile(file).getLines
     for(line<- lines) {
       var splitLine = line.split(" ")
       var byte: String = splitLine(0)

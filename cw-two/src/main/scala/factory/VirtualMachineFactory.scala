@@ -15,9 +15,10 @@ import scala.io.Source
   */
 object VirtualMachineFactory {
 
-  def byteCodeFactory: ByteCodeFactory = ByteCodeFactoryImpl
 
   def vendorParser: ProgramParser = ProgramParserImpl
+
+  def byteCodeFactory: ByteCodeFactory = ByteCodeFactoryImpl
 
   def byteCodeParser: ByteCodeParser = ByteCodeParserImpl
 

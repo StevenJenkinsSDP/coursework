@@ -10,7 +10,7 @@ import vendor.Instruction
 /**
   * Created by steven on 01/04/2017..
   */
-object VirtualMachineParserImpl extends VirtualMachineParser with ProgramParser with ByteCodeParser {
+object VirtualMachineParserImpl extends VirtualMachineParser {
 
   val v = VirtualMachineFactory.virtualMachine
   val p = VirtualMachineFactory.vendorParser
