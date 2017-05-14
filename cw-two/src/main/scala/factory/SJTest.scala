@@ -8,15 +8,18 @@ object SJTest {
   def main(s:Array[String]): Unit = {
 
     val p = ProgramParserImpl
-    val iv = p.parse("/users/steven/Documents/c/cw-two/programs/p01.vm")
+    val ins = p.parse("/users/steven/Documents/c/cw-two/programs/p01.vm")
 
-    println(" this is the output of program parser " +iv)
+    println(" this is the output of program parser " + ins)
 
     val b = ByteCodeParserImpl
-    val bv = b.changeToByte(iv)
+    val bv = b.changeToByte(ins)
+    val bva =   b.parse(bv)
 
-    System.out.println(bv)
-    //val bcv = b.parse(bv)
+    for(bl<-bva) {
+      println(bl.toString)
+    }
+
 
     //val vmp = VirtualMachineParserImpl
     //val v = vmp.parse("/users/steven/Documents/c/cw-two/programs/p01.vm")

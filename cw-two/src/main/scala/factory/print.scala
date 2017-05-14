@@ -6,7 +6,7 @@ import vm.VirtualMachine
   */
 class print  extends ByteCode{
 
-  val code: Byte = bytecode("iprint")
+  val code: Byte = bytecode("print")
 
   def execute(vm: VirtualMachine): VirtualMachine = {
     print(vm.pop()._1)

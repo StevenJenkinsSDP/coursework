@@ -12,19 +12,20 @@ object ByteCodeFactoryImpl extends ByteCodeFactory{
     var b:ByteCode = null
 
 
+
     byte match {
-      case 1 => b = new Iconst
-      case 2 => b = new Iconst
-      case 3 => b = new Iconst
-      case 4 => b = new Iconst
-      case 5 => b = new Iconst
-      case 6 => b = new Iconst
-      case 7 => b = new Iconst
-      case 8 => b = new Iconst
-      case 9 => b = new Iconst
-      case 10 => b = new Iconst
-      case 11 => b = new Iconst
-      case 12 => b = new Iconst
+      case 1 => b = new Iconst(args(0))
+      case 2 => b = new Iadd
+      case 3 => b = new Isub
+      case 4 => b = new Imul
+      case 5 => b = new Idiv
+      case 6 => b = new Irem
+      case 7 => b = new Ineg
+      case 8 => b = new Iinc
+      case 9 => b = new Idec
+      case 10 => b = new Idup
+      case 11 => b = new Iswap
+      case 12 => b = new print
     }
     b
   }

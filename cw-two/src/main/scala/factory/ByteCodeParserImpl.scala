@@ -4,6 +4,7 @@ import bc.ByteCode
 import bc.ByteCodeParser
 import bc.ByteCodeFactory
 import vendor.Instruction
+import scala.collection.mutable.ArrayBuffer
 
 /**
   * Created by steven on 01/04/2017.
@@ -15,9 +16,7 @@ object ByteCodeParserImpl extends ByteCodeParser{
 
   def changeToByte(ins: Vector[Instruction]):Vector[Byte] = {
     for (i<-ins) {
-      println(bytecode(i.name))
      vbyte = vbyte:+ bytecode(i.name)
-      println (vbyte)
       for (a<-i.args) {
         vbyte = vbyte:+ a.toByte
       }
@@ -26,8 +25,20 @@ object ByteCodeParserImpl extends ByteCodeParser{
   }
 
   def parse(bc: Vector[Byte]): Vector[ByteCode] = {
-    for(b<- bc) {
-      bcode:+ ByteCodeFactoryImpl.make(b)
+    var a: ArrayBuffer[Byte] = new ArrayBuffer
+    for (b<-bc) {
+      a += b
+    }
+    val i = 0
+    while (i< a.size) {
+      if(a(i)== bytecode("iconst")) {
+        bcode = bcode:+ByteCodeFactoryImpl.make(a(i),a(i+1))
+        a.remove(i)
+        a.remove(i)
+      } else {
+        bcode = bcode:+ByteCodeFactoryImpl.make(a(i))
+        a.remove(i)
+      }
     }
     bcode
   }

@@ -4,13 +4,12 @@ import vm.VirtualMachine
 /**
   * Created by steven on 01/04/2017.
   */
-class Iconst extends ByteCode{
+class Iconst(val num:Int) extends ByteCode{
 
   val code: Byte = bytecode("iconst")
-  val num:Byte = 0
 
   def execute(vm: VirtualMachine): VirtualMachine = {
-    vm.push(vm.pop._1)
+    vm.push(num)
     vm
   }
 
