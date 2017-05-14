@@ -14,15 +14,7 @@ object ByteCodeParserImpl extends ByteCodeParser{
   var bcode:Vector[ByteCode] = Vector.empty
   var vbyte:Vector[Byte] = Vector.empty
 
-  def changeToByte(ins: Vector[Instruction]):Vector[Byte] = {
-    for (i<-ins) {
-     vbyte = vbyte:+ bytecode(i.name)
-      for (a<-i.args) {
-        vbyte = vbyte:+ a.toByte
-      }
-    }
-    vbyte
-  }
+
 
   def parse(bc: Vector[Byte]): Vector[ByteCode] = {
     var a: ArrayBuffer[Byte] = new ArrayBuffer

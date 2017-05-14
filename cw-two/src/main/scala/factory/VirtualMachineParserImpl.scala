@@ -1,10 +1,7 @@
 package factory
 import bc.ByteCode
 import vm.VirtualMachineParser
-import vendor.ProgramParser
-import bc.ByteCodeParser
-import factory.ProgramParserImpl.InstructionList
-import factory.VirtualMachineParserImpl.bc
+import factory.ByteCodeParserImpl.{bytecode, vbyte}
 import vendor.Instruction
 
 /**
@@ -12,36 +9,48 @@ import vendor.Instruction
   */
 object VirtualMachineParserImpl extends VirtualMachineParser {
 
-  val p = VirtualMachineFactory.vendorParser
-  val bc = VirtualMachineFactory.byteCodeParser
+  val pp = VirtualMachineFactory.vendorParser
+  val bcp = VirtualMachineFactory.byteCodeParser
   val b:Vector[Byte] = Vector.empty
 
   def parse(file: String): Vector[ByteCode] = {
 
     //turn the file into an instruction list
-    val ins = p.parse(file)
+    val ins = pp.parse(file)
+    println("ins" +ins.size)
     //turn the instruction list into vector of bytes
-
+    val byteVector = changeToByte(ins)
+    println("bytecodevector"+ byteVector.size)
     //turn the vector of bytes into a vector of ByteCode
-    bc.parse(b)
+    bcp.parse(byteVector)
   }
 
   def parse(bc: Vector[Byte]): Vector[ByteCode] = {
 
-    this.bc.parse(b)
+    this.bcp.parse(b)
   }
 
   def parseString(str: String): Vector[ByteCode] = {
     //turn the file into an instruction list
-    val ins = p.parse(str)
+    val ins = pp.parse(str)
 
     //turn the instruction list into vector of bytes
     for (i <- ins) {
-      val by = bc.bytecode(i.name)
+      val by = bcp.bytecode(i.name)
       b:+by
     }
     //turn the vector of bytes into a vector of ByteCode
-    bc.parse(b)
+    bcp.parse(b)
+  }
+
+  def changeToByte(ins: Vector[Instruction]):Vector[Byte] = {
+    for (i<-ins) {
+      vbyte = vbyte:+ bytecode(i.name)
+      for (a<-i.args) {
+        vbyte = vbyte:+ a.toByte
+      }
+    }
+    vbyte
   }
 
 }
