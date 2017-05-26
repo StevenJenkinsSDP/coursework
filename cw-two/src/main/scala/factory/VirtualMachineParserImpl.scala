@@ -1,7 +1,7 @@
 package factory
 import bc.ByteCode
 import vm.VirtualMachineParser
-import factory.ByteCodeParserImpl.{bytecode, vbyte}
+import factory.ByteCodeParserImpl.{bytecode}
 import vendor.Instruction
 
 /**
@@ -21,7 +21,8 @@ object VirtualMachineParserImpl extends VirtualMachineParser {
     val byteVector = changeToByte(ins)
     //turn the vector of bytes into a vector of ByteCode
 
-    bcp.parse(byteVector)
+    val bc = bcp.parse(byteVector)
+    bc
 
   }
 
@@ -33,7 +34,6 @@ object VirtualMachineParserImpl extends VirtualMachineParser {
   def parseString(str: String): Vector[ByteCode] = {
     //turn the file into an instruction list
     val ins = pp.parseString(str)
-
     //turn the instruction list into vector of bytes
     val byteVector = changeToByte(ins)
     //turn the vector of bytes into a vector of ByteCode

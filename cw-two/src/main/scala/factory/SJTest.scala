@@ -18,9 +18,11 @@ object SJTest {
 
    // val x = vmp.changeToByte(v)
 
-    val p = vmp.parseString("iconst 4\niconst 5\niadd\nprint")
+    //val p = vmp.parseString("iconst 4\niconst 5\niadd\nprint")
 
-   vm.execute(p)
+    val s = if (!b.names.contains("ine")) "true" else "false"
+    println(s)
+    println(b.names)
 
 
 

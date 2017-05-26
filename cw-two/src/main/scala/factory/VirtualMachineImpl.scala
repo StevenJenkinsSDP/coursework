@@ -22,8 +22,8 @@ class VirtualMachineImpl extends VirtualMachine  {
 
   def executeOne(bc: Vector[ByteCode]): (Vector[ByteCode], VirtualMachine) = {
     var b = bc(0)
-    b.execute(this)
-    (bc,this)
+
+    (bc.drop(1),b.execute(this))
   }
 
   def push(value: Int): VirtualMachine = {
@@ -37,11 +37,8 @@ class VirtualMachineImpl extends VirtualMachine  {
   }
 
   def state: Vector[Int] ={
-    val intV: Vector[Int] = Vector.empty
-    for(i<-intStack) {
-      intV:+i
-    }
-    intV
+
+    intStack.toVector
 
   }
 
