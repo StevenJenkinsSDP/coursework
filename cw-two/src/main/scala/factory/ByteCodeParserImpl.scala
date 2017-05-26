@@ -14,17 +14,18 @@ object ByteCodeParserImpl extends ByteCodeParser{
   var bcode:Vector[ByteCode] = Vector.empty
   var vbyte:Vector[Byte] = Vector.empty
 
-
-
   def parse(bc: Vector[Byte]): Vector[ByteCode] = {
+
     var a: ArrayBuffer[Byte] = new ArrayBuffer
+
     for (b<-bc) {
       a += b
     }
-    val i = 0
+
+    var i = 0
     while (i< a.size) {
       if(a(i)== bytecode("iconst")) {
-        bcode = bcode:+ByteCodeFactoryImpl.make(a(i),a(i+1))
+        bcode = bcode:+ByteCodeFactoryImpl.make(a(i),a(i+1).toInt)
         a.remove(i)
         a.remove(i)
       } else {

@@ -1,7 +1,6 @@
 package factory
 
-import bc.ByteCode
-import bc.ByteCodeFactory
+import bc.{ByteCode, ByteCodeFactory, InvalidBytecodeException}
 /**
   * Created by steven on 01/04/2017..
   */
@@ -26,6 +25,7 @@ object ByteCodeFactoryImpl extends ByteCodeFactory{
       case 10 => b = new Idup
       case 11 => b = new Iswap
       case 12 => b = new print
+      case _ => throw new InvalidBytecodeException("invalid byte code")
     }
     b
   }

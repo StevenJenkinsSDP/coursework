@@ -12,7 +12,16 @@ object ProgramParserImpl extends ProgramParser{
 
 
   def parse(file: String): InstructionList = {
-    val lines = Source.fromFile(file).getLines
+    val lines = Source.fromFile(file).getLines.toArray
+    parseLines(lines)
+  }
+
+  def parseString(string: String): InstructionList = {
+    val s = string.split("\n")
+    parseLines(s)
+  }
+
+  def parseLines(lines:Array[String]):InstructionList = {
     for(line<- lines) {
       var splitLine = line.split(" ")
       var byte: String = splitLine(0)
@@ -28,8 +37,5 @@ object ProgramParserImpl extends ProgramParser{
     instructions
   }
 
-  def parseString(string: String): InstructionList = {
-    instructions
-  }
 
 }

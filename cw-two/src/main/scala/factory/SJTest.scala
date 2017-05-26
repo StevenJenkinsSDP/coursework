@@ -10,10 +10,20 @@ object SJTest {
     val vmf  =VirtualMachineFactory
     val vmp = vmf.virtualMachineParser
     val vm = vmf.virtualMachine
+    val b = vmf.byteCodeParser
+    val pp = vmf.vendorParser
 
-    val byteCodeVector = vmp.parse("/users/steven/Documents/c/cw-two/programs/p03.vm")
 
-    vm.execute(byteCodeVector)
+    //val v = pp.parse("/users/steven/Documents/c/cw-two/programs/p01.vm")
+
+   // val x = vmp.changeToByte(v)
+
+    val p = vmp.parseString("iconst 4\niconst 5\niadd\nprint")
+
+   vm.execute(p)
+
+
+
 
   }
 

@@ -20,35 +20,35 @@ object VirtualMachineParserImpl extends VirtualMachineParser {
     //turn the instruction list into vector of bytes
     val byteVector = changeToByte(ins)
     //turn the vector of bytes into a vector of ByteCode
+
     bcp.parse(byteVector)
+
   }
 
   def parse(bc: Vector[Byte]): Vector[ByteCode] = {
 
-    this.bcp.parse(b)
+    bcp.parse(b)
   }
 
   def parseString(str: String): Vector[ByteCode] = {
     //turn the file into an instruction list
-    val ins = pp.parse(str)
+    val ins = pp.parseString(str)
 
     //turn the instruction list into vector of bytes
-    for (i <- ins) {
-      val by = bcp.bytecode(i.name)
-      b:+by
-    }
+    val byteVector = changeToByte(ins)
     //turn the vector of bytes into a vector of ByteCode
-    bcp.parse(b)
+    bcp.parse(byteVector)
   }
 
   def changeToByte(ins: Vector[Instruction]):Vector[Byte] = {
+    var vbyte1: Vector[Byte] = Vector.empty
     for (i<-ins) {
-      vbyte = vbyte:+ bytecode(i.name)
+      vbyte1 = vbyte1:+ bytecode(i.name)
       for (a<-i.args) {
-        vbyte = vbyte:+ a.toByte
+        vbyte1 = vbyte1:+ a.toByte
       }
     }
-    vbyte
+    vbyte1
   }
 
 }

@@ -12,7 +12,7 @@ class PublicVendorParserSuite extends FunSuite {
   }
 
   test("[4] vendor parser should parse a program file correctly") {
-    val insts = vp.parse("programs/p03.vm")
+    val insts = vp.parse("cw-two/programs/p03.vm")
     assert(insts.length == 20)
 
     val all = Vector("iconst", "iconst", "iswap", "iadd", "iconst", "iadd",

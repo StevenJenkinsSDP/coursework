@@ -9,7 +9,7 @@ class PublicVirtualMachineSuite extends FunSuite {
   val vm  = VirtualMachineFactory.virtualMachine
 
   test("[10] a virtual machine should execute a program") {
-    val bc  = vmp.parse("programs/p05.vm")
+    val bc  = vmp.parse("cw-two/programs/p05.vm")
     val vm2 = vm.execute(bc)
   }
 
