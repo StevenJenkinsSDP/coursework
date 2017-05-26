@@ -1,7 +1,7 @@
 package factory
-import bc.ByteCode
+import bc.{ByteCode, InvalidBytecodeException}
 import vm.VirtualMachineParser
-import factory.ByteCodeParserImpl.{bytecode}
+import factory.ByteCodeParserImpl.bytecode
 import vendor.Instruction
 
 /**
@@ -17,6 +17,12 @@ object VirtualMachineParserImpl extends VirtualMachineParser {
 
     //turn the file into an instruction list
     val ins = pp.parse(file)
+    for(in<-ins) {
+      if (!bcp.names.contains(in.name)) {
+        throw new InvalidBytecodeException("invalid byte code " + in.name)
+      }
+    }
+
     //turn the instruction list into vector of bytes
     val byteVector = changeToByte(ins)
     //turn the vector of bytes into a vector of ByteCode
@@ -50,5 +56,7 @@ object VirtualMachineParserImpl extends VirtualMachineParser {
     }
     vbyte1
   }
+
+
 
 }
