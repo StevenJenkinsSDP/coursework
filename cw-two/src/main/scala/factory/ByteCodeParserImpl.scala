@@ -11,11 +11,11 @@ import scala.collection.mutable.ArrayBuffer
   */
 object ByteCodeParserImpl extends ByteCodeParser{
 
-  var bcode:Vector[ByteCode] = Vector.empty
-  var vbyte:Vector[Byte] = Vector.empty
+
 
   def parse(bc: Vector[Byte]): Vector[ByteCode] = {
-
+    var bcode:Vector[ByteCode] = Vector.empty
+    var vbyte:Vector[Byte] = Vector.empty
     var a: ArrayBuffer[Byte] = new ArrayBuffer
 
     for (b<-bc) {

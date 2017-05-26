@@ -8,7 +8,7 @@ import scala.io.Source
   */
 object ProgramParserImpl extends ProgramParser{
 
-  var instructions:InstructionList = Vector.empty
+
 
 
   def parse(file: String): InstructionList = {
@@ -22,6 +22,7 @@ object ProgramParserImpl extends ProgramParser{
   }
 
   def parseLines(lines:Array[String]):InstructionList = {
+    var instructions:InstructionList = Vector.empty
     for(line<- lines) {
       var splitLine = line.split(" ")
       var byte: String = splitLine(0)
