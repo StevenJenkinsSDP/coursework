@@ -20,7 +20,6 @@ object ByteCodeParserImpl extends ByteCodeParser {
 
     var i = 0
     while (i< a.size) {
-
        if(a(i)== bytecode("iconst")) {
         bcode = bcode:+ByteCodeFactoryImpl.make(a(i),a(i+1).toInt)
         a.remove(i)
@@ -30,7 +29,6 @@ object ByteCodeParserImpl extends ByteCodeParser {
         a.remove(i)
       }
     }
-
     bcode
   }
 }

@@ -9,10 +9,10 @@ class Iswap  extends ByteCode{
   val code: Byte = bytecode("iswap")
 
   def execute(vm: VirtualMachine): VirtualMachine = {
-    var x = vm.pop._1
-    var y = vm.pop._1
-    vm.push(y)
+    var x = vm.pop()._1
+    var y = vm.pop()._1
     vm.push(x)
+    vm.push(y)
     vm
   }
 }
